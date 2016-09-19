@@ -3,9 +3,9 @@ Title: Run 'git' Commands from the 'R' Console
 Version: 1.0.0
 Author: Gábor Csárdi
 Maintainer: Gábor Csárdi <csardi.gabor@gmail.com>
-Description: For heavy 'R' and 'git' users, it is annoying to switch back and forth
-  between the 'R' and 'git' consoles. This package allows running 'git'
-  commands directly form 'R', with ease.
+Description: For heavy 'R' and 'git' users, it is annoying to switch back
+    and forth between the 'R' and 'git' consoles. This package allows
+    running 'git' commands directly form 'R', with ease.
 License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/gaborcsardi/gitty
@@ -13,3 +13,4 @@ BugReports: https://github.com/gaborcsardi/gitty/issues
 RoxygenNote: 5.0.1.9000
 Suggests: 
     testthat
+Encoding: UTF-8
