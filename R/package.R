@@ -26,6 +26,7 @@ git <- ""
 check_for_support <- function() {
 
   if (Sys.getenv("RSTUDIO") == 1 ||
+      Sys.getenv("R_GUI_APP_VERSION") != "" &&
       identical(getOption("STERM"), "iESS") ||
       Sys.getenv("EMACS") == "t") {
 
