@@ -15,19 +15,6 @@ my_completer <- function(e) {
 
 #' This is called when a "git " command line is being TAB-completed
 #'
-#' Put in a `#` to help creating a valid R command line.
-#' `git ` -> `git # `
-#' `git stat` -> `git # status`
-#'
-#' If it is too late to put in the `#`, then warn the users that they
-#' need it:
-#' `git status` -> `git status !#!`
-#'
-#' If the `#` is there, then just complete regularly
-#' `git # com` -> `git # commit `
-#' `git # commit --am` -> `git # commit --amend `
-#' Etc.
-#'
 #' Current contents of the rcompgen environment:
 #' * `attached_packages` this is always empty for me
 #' * `comps` the completions should be put in here
@@ -53,16 +40,12 @@ my_completer <- function(e) {
 git_completer <- function(env) {
   line <- env$linebuffer
 
-  ## If it is just "git ", then put in the #
-  env$comps <- if (grepl("^\\s*git\\s+$", line)) {
-    "# "
-  } else {
-    cline <- drop_comment_char(line)
-    position <- env$end + 1L - (nchar(cline) - nchar(line))
-    comps <- git_bash_completer(cline, position)
-    if (length(comps) > 1) comps else warn_for_no_hash(line, comps)
-  }
+  cline <- drop_comment_char(line)
+  position <- env$end + 1L - (nchar(cline) - nchar(line))
+  comps <- git_bash_completer(cline, position)
+  if (length(comps) > 1) comps else warn_for_no_hash(line, comps)
 
+  env$comps <- comps
   env$fileName <- FALSE
   env
 }

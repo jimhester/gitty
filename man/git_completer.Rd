@@ -13,20 +13,6 @@ git_completer(env)
 The potentially modified `rcompgen` environment.
 }
 \description{
-Put in a `#` to help creating a valid R command line.
-`git ` -> `git # `
-`git stat` -> `git # status`
-}
-\details{
-If it is too late to put in the `#`, then warn the users that they
-need it:
-`git status` -> `git status !#!`
-
-If the `#` is there, then just complete regularly
-`git # com` -> `git # commit `
-`git # commit --am` -> `git # commit --amend `
-Etc.
-
 Current contents of the rcompgen environment:
 * `attached_packages` this is always empty for me
 * `comps` the completions should be put in here

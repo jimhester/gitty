@@ -10,8 +10,8 @@ License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/gaborcsardi/gitty
 BugReports: https://github.com/gaborcsardi/gitty/issues
-RoxygenNote: 5.0.1.9000
-Suggests: 
+RoxygenNote: 5.0.1
+Suggests:
     testthat
 Imports:
     whisker
