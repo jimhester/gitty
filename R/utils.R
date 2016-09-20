@@ -14,3 +14,12 @@ echo_command <- function(x) {
   pr <- tail(strsplit(getOption("prompt"), "\n")[[1]], 1)
   cat(pr, x, "\n", sep = "")
 }
+
+find_parent <- function(name, pkg = NULL) {
+  if (!is.null(pkg)) name <- call("::", pkg, name)
+  calls <- sys.calls()
+  for (i in seq_along(calls)) {
+    if (identical(calls[[i]][[1]], name)) return(i)
+  }
+  NA_integer_
+}

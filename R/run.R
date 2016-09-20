@@ -7,6 +7,10 @@
 ## If it has some comments, then we run the current line.
 
 gitfunction <- function() {
+
+  ## Do not run this from the tab-complete
+  if (!is.na(find_parent(quote(custom.completer)))) return()
+
   hist <- get_history_tail(3)
 
   echo <- FALSE
