@@ -9,17 +9,41 @@
 #' @name gitty
 NULL
 
+#' @export
+
 git <- ""
+
+old_opts <- NULL
 
 #' @importFrom utils packageName rc.options
 
 .onLoad <- function(libname, pkgname) {
   if (interactive()) {
+    rm(list = "git", envir = asNamespace(packageName()))
     if (check_for_support()) {
-      rm(list = "git", envir = asNamespace(packageName()))
+      ## Active binding for git
       makeActiveBinding("git", gitfunction, asNamespace(packageName()))
+
+      ## TAB completion
       rc.options(custom.completer = my_completer)
+
+      ## Error handler, off for now
+      if (FALSE) {
+        old_opts <<- options(
+          error = structure(make_my_error_handler(), gitty = TRUE),
+          show.error.messages = FALSE
+        )
+      }
     }
+  }
+}
+
+.onUnload <- function(libpath) {
+  if (!is.null(old_opts)) {
+    if (isTRUE(attr(getOption("error"), "gitty"))) {
+      options(error = old_opts$error)
+    }
+    options(show.error.messages = TRUE)
   }
 }
 
