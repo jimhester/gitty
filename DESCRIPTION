@@ -13,4 +13,6 @@ BugReports: https://github.com/gaborcsardi/gitty/issues
 RoxygenNote: 5.0.1.9000
 Suggests: 
     testthat
+Imports:
+    whisker
 Encoding: UTF-8
