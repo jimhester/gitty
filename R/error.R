@@ -7,12 +7,14 @@ make_my_error_handler <- function() {
 
     ## It is a git call from the console directly, run it
     ## It is already in the history, so just call 'git' to get it and run it
-    if (grepl(git_msg_pattern, msg) && length(sys.calls()) == 1) {
+    if (grepl(git_msg_pattern, msg)) {
 
       num_lines <- length(strsplit(msg, "\n", fixed = TRUE)[[1]])
       erase_lines(num_lines)
       git
 
+    } else {
+      FALSE
     }
   }
 }

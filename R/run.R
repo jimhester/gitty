@@ -31,5 +31,9 @@ gitfunction <- function() {
     cmdline <- drop_comment_char(cmdline)
     if (echo) echo_command(cmdline)
     system(cmdline)
+    invisible(TRUE)
+
+  } else {
+    invisible(FALSE)
   }
 }
