@@ -11,7 +11,7 @@
 
 For heavy R and git users, it is annoying to switch back and forth
 between the R and git consoles. This package allows running git
-commands directly form R, with ease.
+commands directly from R, with ease.
 
 ## Installation
 
