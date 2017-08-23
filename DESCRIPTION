@@ -14,5 +14,8 @@ RoxygenNote: 5.0.1
 Suggests:
     testthat
 Imports:
-    whisker
+    whisker,
+    completeme
+Remotes:
+    jimhester/completeme
 Encoding: UTF-8

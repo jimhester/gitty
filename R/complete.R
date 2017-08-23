@@ -2,15 +2,12 @@
 my_completer <- function(e) {
   buffer <- e$linebuffer
   if (grepl("^git ", buffer)) {
-    tryCatch(
+    return(tryCatch(
       git_completer(e),
-      error = function(e) ""
-    )
-  } else {
-    rc.options(custom.completer = NULL)
-    on.exit(rc.options(custom.completer = my_completer))
-    utils:::.completeToken()
+      error = function(e) FALSE
+    ))
   }
+  return (FALSE)
 }
 
 #' This is called when a "git " command line is being TAB-completed
@@ -47,7 +44,8 @@ git_completer <- function(env) {
 
   env$comps <- comps
   env$fileName <- FALSE
-  env
+
+  TRUE
 }
 
 warn_for_no_hash <- function(line, comps) {

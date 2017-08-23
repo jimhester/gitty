@@ -25,7 +25,7 @@ old_opts <- NULL
       makeActiveBinding("git", gitfunction, asNamespace(packageName()))
 
       ## TAB completion
-      rc.options(custom.completer = my_completer)
+      completeme::register_completion(gitty = my_completer)
 
       ## Error handler
       old_opts <<- options(
