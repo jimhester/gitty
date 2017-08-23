@@ -4,10 +4,9 @@ my_completer <- function(e) {
   if (grepl("^git ", buffer)) {
     return(tryCatch(
       git_completer(e),
-      error = function(e) FALSE
+      error = function(e) NULL
     ))
   }
-  return (FALSE)
 }
 
 #' This is called when a "git " command line is being TAB-completed
@@ -42,10 +41,7 @@ git_completer <- function(env) {
   comps <- git_bash_completer(cline, position)
   if (length(comps) > 1) comps else warn_for_no_hash(line, comps)
 
-  env$comps <- comps
-  env$fileName <- FALSE
-
-  TRUE
+  comps
 }
 
 warn_for_no_hash <- function(line, comps) {
